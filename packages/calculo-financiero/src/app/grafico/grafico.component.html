@@ -1,0 +1,48 @@
+<article class="flex flex-col">
+  <h1 class="pl-4 mt-7 text-left font-DMSans text-teal-900 text-xl font-bold">
+  DATOS GENERALES:
+  </h1>
+  <div class="lg:gap-8 md:gap-5 md:flex-row px-8 flex-col-reverse flex justify-center w-full">
+    <section class="flex-wrap flex items-center justify-center">
+      <div class="lg:w-64 lg:h-64 md:h-52 md:w-52 xs:h-72 xs:w-72 w-64 h-56">
+        <canvas class="w-full" id="graficoCircle"></canvas>
+      </div>
+    </section>
+    <section class="lg:gap-3 mt-5 flex flex-col justify-center gap-1">
+      <div>
+        <h1 class="font-DMSans text-teal-900 lg:text-xl md:text-xs text-md font-bold">INGRESO GENERAL: </h1>
+        <p class="xm:text-xl text-lg text-teal-700 font-bold md:float-none float-right">$ {{ this.ingressTotal }}</p>
+      </div>
+      <div>
+        <h1 class="font-DMSans text-teal-900 lg:text-xl md:text-xs text-md font-bold">GASTO GENERAL:</h1>
+        <p class="xm:text-xl text-lg text-red-500 font-bold md:float-none float-right">-$ {{ this.gastossTotal }}</p>
+      </div>
+      <div>
+        <h1 class="font-DMSans text-teal-900 lg:text-xl md:text-xs text-md font-bold">AHORRO:</h1>
+        <p
+          class="xm:text-xl text-lg font-bold md:float-none float-right"
+          [ngClass]="{
+            'text-blue-600': resultadoEnd && resultadoEnd > 0,
+            'text-red-500': resultadoEnd && resultadoEnd <= 0
+          }"
+        >
+          {{
+            this.resultadoEnd && this.resultadoEnd > 0
+              ? "$ " + this.resultadoEnd
+              : "- $" + this.resultadoEnd
+          }}
+        </p>
+      </div>
+    </section>
+  </div>
+  <h1 class="xm:mb-14 pl-4 mb-6 text-left font-DMSans text-teal-900 text-xl font-bold">
+    PANORAMA EN GENERAL:
+  </h1>
+  <section class="flex items-center justify-center mb-14">
+    <div>
+      <div class="lg:h-40 lg:w-96 xm:w-80 xm:h-36 w-64 h-32">
+        <canvas class="w-full h-full" id="graficoBar"></canvas>
+      </div>
+    </div>
+  </section>
+</article>
