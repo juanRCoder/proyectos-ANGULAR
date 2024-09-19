@@ -1,0 +1,62 @@
+<main class="font-inter fondo-tarjetas-musicales min-h-screen sm:flex sm:items-center sm:justify-center flex-col">
+  <section class="bg-[#121826a6] h-screen w-full sm:h-[31rem] sm:w-[22rem] sm:rounded-xl flex flex-col justify-center sm:justify-normal gap-1 p-[16px]">
+      <!-- AUDIO HIDDEN -->
+      <audio id="audio" class="hidden">
+        <source [src]="musicaActual" type="audio/mpeg" />
+      </audio>
+
+      <!-- IMAGEN -->
+      <img
+        id="imagen"
+        [src]="imagenActual"
+        alt="imagen-tarjetas"
+        class="h-[19rem] w-full object-cover rounded-xl"
+      />
+
+      <!-- NOMBRE DE LA MUSICA Y AUTOR -->
+      <div class="text-center text-[#E5E7EB]">
+        <h1 class="text-xl">{{ nameMusic }}</h1>
+        <p class="text-lg text-[#4D5562]">{{ autor }}</p>
+      </div>
+      
+      <!-- TIEMPO DE LA MUSICA -->
+      <div class="flex justify-between text-[10px] text-[#4D5562]">
+        <p>{{ tiempoActual }}</p>
+        <p>{{ tiempoTotal }}</p>
+      </div>
+      <input
+        id="slider"
+        type="range"
+        min="0"
+        [max]="duracionTotal"
+        [(ngModel)]="tiempoActualSlider"
+        (input)="onSliderChange($event)"
+        class="input-slider"
+      />
+      
+      <!-- START | STOP -->
+      <section class="pt-2 flex gap-4 justify-center">
+        <button (click)="AfterMusic()">
+          <img src="../icons/Stop_and_play_fill-1.svg" alt="icono-afterMusic"/>
+        </button>
+        <div class="flex items-center justify-center h-10 w-10 gap-10 bg-[#C93B76] rounded-full shadow-md shadow-[#C93B76]">
+          @if (empezarMusica) {
+          <button (click)="playSound()">
+            <img src="../icons/Play_fill.svg" alt="icono-playSound"/>
+          </button>
+          } @else {
+          <button (click)="stopSound()" class="text-slate-200 font-bold">
+            ll
+          </button>
+          }
+        </div>
+        <button (click)="NextMusic()">
+          <img src="../icons/Stop_and_play_fill_reverse.svg" alt="icono-nextMusic"/>
+        </button>
+      </section>
+
+    </section>
+  <p class="flex-none absolute bottom-4 text-slate-200 text-center w-full text-sm">
+    Realizado por Juan Ramirez | JuanRCoder
+  </p>
+</main>
